@@ -1,6 +1,5 @@
 # Membuat deklarasi dalam program menggunakan variabel
 
-# 
 nama = "Muhammad Seva Hardian" # ini adalah variabel nama dengan tipe data string (str)
 umur = 18 # ini adalah variabel umur dengan tipe data integer (int)
 berat = 50.8 # ini adalah variabel berat dengan tipe data float
