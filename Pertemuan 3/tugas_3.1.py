@@ -1,9 +1,10 @@
 panjang = 12
 lebar = 5
 tinggi = 8
-luas = panjang * lebar
+
+luas = 2 * (panjang * lebar + panjang * tinggi + lebar * tinggi)
 volume = panjang * lebar * tinggi
-keliling = 2 * (panjang + lebar)
+keliling = 4 * (panjang + lebar + tinggi)
 
 # a. Hitunglah luas, volume, dan keliling bangunan tersebut!
 print("Luas permukaan bangunan adalah", luas, "cm^2")
