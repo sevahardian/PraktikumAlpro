@@ -1,5 +1,6 @@
-bilangan = range(1, 101)
-
-for i in bilangan:
-    if i > 1 and i % 2 != 0:
-        print(f"Angka {i} merupakan bilangan prima")
+for angka in range(2, 101):
+    for i in range(2, angka):
+        if angka % i == 0:
+            break
+    else:
+        print(f"\n Angka {angka} -> angka prima")
