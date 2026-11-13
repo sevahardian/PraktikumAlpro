@@ -1,4 +1,5 @@
 # LIST
+
 # menggunakan kurung siku
 data_list = [10,2,4,3,2]
 print(data_list)
