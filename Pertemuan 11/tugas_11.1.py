@@ -46,7 +46,6 @@ while True:
         tanggal_pinjam = data_perpustakaan[KEY]['tanggal_pinjam'].strftime("%x")
         STATUS = data_perpustakaan[KEY]['status']
         
-        
         print(f"{KEY: <6} {JUDUL: <50} {PENULIS: <17} {tahun_terbit:^10} {tanggal_pinjam:^10} {STATUS: <15}")
     
     print("\n")

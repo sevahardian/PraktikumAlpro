@@ -23,11 +23,13 @@ mahasiswa3 = {
     'beasiswa' : True,
     'terbit' : datetime.datetime(1977,5,10) # tahun, tanggal, bulan
 }
+
 data_mahasiswa = {
     'MAH001' : mahasiswa1,
-    'MAH00' : mahasiswa2,
+    'MAH002' : mahasiswa2,
     'MAH003' : mahasiswa3,
 }
+
 print(f"{'KEY' : <6} {'Nama' : <6} {'SKS' : <3} {'Beasiswa' : <9} {'terbit' : <10}")
 print("-" * 50)
 
