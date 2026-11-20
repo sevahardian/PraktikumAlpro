@@ -44,7 +44,7 @@ def volumeBola(jari2_bola):
     volume_bola = 4/3 * phi * (jari2_bola ** 3)
     return volume_bola
 
-print(" -- Volume Balok -- ")
+print(" -- Volume Bola -- ")
 jari2_bola = float(input("Masukkan jari-jari lingkaran: "))
 volume_bola = volumeBola(jari2_bola)
 print(f"Volume bola dengan jari2 {jari2_bola} cm adalah {volume_bola} cm3 \n")
