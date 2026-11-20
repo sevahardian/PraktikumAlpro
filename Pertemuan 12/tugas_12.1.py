@@ -1,5 +1,9 @@
 # Buatlah program dengan input dan fungsi untuk menghitung:
 
+import os
+
+os.system("cls")
+
 # a. Luas persegi panjang
 def luasPersegiPanjang(panjang_pp, lebar_pp):
     luas_pp = panjang_pp * lebar_pp
