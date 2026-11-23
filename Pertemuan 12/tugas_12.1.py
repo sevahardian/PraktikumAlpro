@@ -1,8 +1,9 @@
 # Buatlah program dengan input dan fungsi untuk menghitung:
 
 import os
+import math
 
-os.system("cls")
+os.system("clear")
 
 # a. Luas persegi panjang
 def luasPersegiPanjang(panjang_pp, lebar_pp):
@@ -25,12 +26,11 @@ panjang_balok = float(input("Masukkan panjang balok: "))
 lebar_balok = float(input("Masukkan lebar balok: "))
 tinggi_balok = float(input("Masukkan tinggi balok: "))
 volume_balok = volumeBalok(panjang_balok, lebar_balok, tinggi_balok)
-print(f"Luas persegi panjang dengan panjang {panjang_balok} cm, lebar {lebar_balok} cm dan tinggi {tinggi_balok} adalah {volume_balok} cm3 \n")
+print(f"Volume balok dengan panjang {panjang_balok} cm, lebar {lebar_balok} cm dan tinggi {tinggi_balok} adalah {volume_balok} cm3 \n")
 
 # c. Luas lingkaran
 def luasLingkaran(jari2_lingkaran):
-    phi = 22/7
-    luas_lingkaran = phi * (jari2_lingkaran ** 2)
+    luas_lingkaran = math.pi * (jari2_lingkaran ** 2)
     return luas_lingkaran
 
 print(" -- Luas Lingkaran -- ")
@@ -40,12 +40,11 @@ print(f"Luas lingkaran dengan jari2 {jari2_lingkaran} cm adalah {luas_lingkaran}
 
 # d. Volume bola
 def volumeBola(jari2_bola):
-    phi = 22/7
-    volume_bola = 4/3 * phi * (jari2_bola ** 3)
+    volume_bola = 4/3 * math.pi * (jari2_bola ** 3)
     return volume_bola
 
 print(" -- Volume Bola -- ")
-jari2_bola = float(input("Masukkan jari-jari lingkaran: "))
+jari2_bola = float(input("Masukkan jari-jari bola: "))
 volume_bola = volumeBola(jari2_bola)
 print(f"Volume bola dengan jari2 {jari2_bola} cm adalah {volume_bola} cm3 \n")
 
