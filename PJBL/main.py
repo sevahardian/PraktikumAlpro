@@ -9,7 +9,6 @@ BARIS = ["A", "B", "C", "D", "E"]
 KOLOM = 6
 MAKS_KURSI = 6
 BIAYA_LAYANAN = 3000
-MAKS_DISKON = 30
 BATAS_BATAL_JAM = 2
 
 films = {
@@ -18,28 +17,28 @@ films = {
         "genre": "Aksi",
         "rating": "SU",
         "durasi": 110,
-        "jam": (("13:00", "Regular"), ("16:30", "Premiere"), ("19:30", "IMAX"))
+        "jam": (("13:00"), ("16:30"), ("19:30"))
     },
     2: {
         "judul": "Malam Berdarah",
         "genre": "Horor",
         "rating": "D17+",
         "durasi": 100,
-        "jam": (("15:00", "Regular"), ("20:00", "Regular"))
+        "jam": (("15:00"), ("20:00"))
     },
     3: {
         "judul": "Cinta di Ujung Hujan",
         "genre": "Drama",
         "rating": "R13+",
         "durasi": 120,
-        "jam": (("12:00", "Regular"), ("17:30", "Premiere"))
+        "jam": (("12:00"), ("17:30"))
     },
     4: {
         "judul": "Kota Tanpa Tidur",
         "genre": "Thriller",
         "rating": "D21+",
         "durasi": 130,
-        "jam": (("21:00", "Regular"),)
+        "jam": (("21:00"),)
     }
 }
 
@@ -114,18 +113,15 @@ def sisa_kursi(j):
             sisa += 1
     return sisa
 
-def rp(angka):
-    return f"Rp {angka:,}".replace(",", ".")
-
 def cek_usia(rating, usia):
     if rating == "SU":
         return True
     elif rating == "R13+":
-        return usia >= 13
+        return usia > 13
     elif rating == "D17+":
-        return usia >= 17
+        return usia > 17
     elif rating == "D21+":
-        return usia >= 21
+        return usia > 21
     else:
         return False
 
@@ -154,9 +150,6 @@ def hitungPemesanan(harga, jumlah, waktu, pelajar=False):
         persen += 10
     if pelajar:
         persen += 10
-
-    if persen > MAKS_DISKON:
-        persen = MAKS_DISKON
 
     diskon = (subtotal * persen) // 100
     layanan = BIAYA_LAYANAN * jumlah
@@ -226,7 +219,7 @@ def cetak_tiket(p):
     print(f" Waktu Tayang    : {p['waktu'].strftime('%d-%m-%Y %H:%M')}")
     print(f" Nomor Kursi     : {', '.join(p['kursi'])}")
     print(f" Metode Bayar    : {p['metode']}")
-    print(f" Total Bayar     : {rp(p['total'])}")
+    print(f" Total Bayar     : {(p['total'])}")
     print(f" Status Pesanan  : {p['status'].upper()}")
     print("=" * 50)
     print(f"{'Harap tunjukkan tiket ini saat masuk studio':^50}")
@@ -282,7 +275,7 @@ def pilih_jadwal(id_film, tgl):
         sisa = sisa_kursi(j)
         info = "SOLD OUT" if sisa == 0 else f"Sisa {sisa} Kursi"
         jam_tayang = j["waktu"].strftime("%H:%M")
-        print(f" {i + 1:<4} {jam_tayang:<8} {j['studio']:<12} {rp(harga):<14} {info:<16}")
+        print(f" {i + 1:<4} {jam_tayang:<8} {j['studio']:<12} {(harga):<14} {info:<16}")
     print("-" * 60)
 
     while True:
@@ -331,17 +324,17 @@ def proses_bayar(total):
 
     if metode == 1:
         while True:
-            teks = input(f"Total tagihan: {rp(total)}. Masukkan nominal uang tunai: Rp ")
+            teks = input(f"Total tagihan: {(total)}. Masukkan nominal uang tunai: Rp ")
             if not teks.isdigit():
                 print("\t[!] Input pembayaran harus berupa angka nominal!")
             else:
                 uang = int(teks)
                 if uang < total:
-                    print(f"\t[!] Uang Anda kurang {rp(total - uang)}!")
+                    print(f"\t[!] Uang Anda kurang {(total - uang)}!")
                 else:
                     kembalian = uang - total
                     if kembalian > 0:
-                        print(f"\t[✓] Kembalian Anda: {rp(kembalian)}")
+                        print(f"\t[✓] Kembalian Anda: {(kembalian)}")
                     print("\t[✓] Pembayaran tunai lunas dan diterima.")
                     return "Tunai"
     elif metode == 2:
@@ -384,11 +377,11 @@ def buat_pesanan():
     print("\n" + "=" * 45)
     print(f"{'RINCIAN PEMBAYARAN':^45}")
     print("=" * 45)
-    print(f" Tiket ({jumlah}x @ {rp(harga)}) : {rp(r['subtotal'])}")
-    print(f" Diskon ({r['persen']}%)         : -{rp(r['diskon'])}")
-    print(f" Biaya Layanan           : {rp(r['layanan'])}")
+    print(f" Tiket ({jumlah}x @ {(harga)}) : {(r['subtotal'])}")
+    print(f" Diskon ({r['persen']}%)         : {(r['diskon'])}")
+    print(f" Biaya Layanan           : {(r['layanan'])}")
     print("-" * 45)
-    print(f" TOTAL TAGIHAN           : {rp(r['total'])}")
+    print(f" TOTAL TAGIHAN           : {(r['total'])}")
     print("=" * 45)
 
     metode = proses_bayar(r["total"])
@@ -427,7 +420,7 @@ def lihat_pesanan():
         judul = films[p["id_film"]]["judul"]
         waktu_str = p["waktu"].strftime("%d/%m %H:%M")
         kursi_str = ", ".join(p["kursi"])
-        total_str = rp(p["total"])
+        total_str = (p["total"])
         status_str = p["status"].capitalize()
 
         print(f"{KEY:<8} {judul:<22} {waktu_str:<16} {p['studio']:<10} {kursi_str:<12} {total_str:<12} {status_str:<10}")
